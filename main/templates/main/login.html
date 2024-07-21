@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | MatchRight.ai</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">MatchRight.ai</div>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="{% url 'features' %}">Features</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="login-section">
+         <div class="login-container">
+            <h1>Welcome Back!</h1>
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+                            <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="{% url 'features' %}">Features</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect with Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>support@matchright.ai</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 MatchRight.ai. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
+
+                
+
+

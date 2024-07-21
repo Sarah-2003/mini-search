@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">YourLogo</div>
+            <ul>
+                <li><a href="{% url 'features' %}">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Log In</a></li>
+                {% endif %}
+            </ul>
+            {% if user.is_authenticated %}
+            <a href="{% url 'dashboard' %}" class="cta-button">Go to Dashboard</a>
+        {% else %}
+            <a href="{% url 'login' %}" class="cta-button">Get Started</a>
+        {% endif %}
+    </nav>
+</header>
+
+<main>
+    <section id="hero">
+        <h1>Innovate Your Connections</h1>
+        <p>Discover a new way to network and grow your professional circle.</p>
+        {% if user.is_authenticated %}
+            <a href="{% url 'dashboard' %}" class="cta-button">Go to Dashboard</a>
+        {% else %}
+            <a href="{% url 'login' %}" class="cta-button">Start Networking</a>
+        {% endif %}
+        <section id="features">
+         <h2>Our Platform Features</h2>
+         <div class="feature-grid">
+             <div class="feature-item">
+                 <h3>Smart Matching</h3>
+                 <p>Our AI-driven algorithm connects you with like-minded professionals.</p>
+             </div>
+             <div class="feature-item">
+                 <h3>Secure Messaging</h3>
+                 <p>Communicate safely with end-to-end encryption.</p>
+             </div>
+             <!-- Add more feature items as needed -->
+         </div>
+     </section>
+ </main>
+
+ <footer>
+     <div class="footer-content">
+         <div class="footer-section">
+             <h4>Product</h4>
+             <ul>
+               <li><a href="{% url 'features' %}">Features</a></li>
+               <li><a href="#pricing">Pricing</a></li>
+               <li><a href="#faq">FAQ</a></li>
+           </ul>
+       </div>
+       <div class="footer-section">
+           <h4>Company</h4>
+           <ul>
+               <li><a href="#about">About Us</a></li>
+               <li><a href="#terms">Terms</a></li>
+               <li><a href="#privacy">Privacy</a></li>
+           </ul>
+       </div>
+       <div class="footer-section">
+           <h4>Stay Connected</h4>
+           <form>
+               <input type="email" placeholder="Enter your email">
+               <button type="submit">Subscribe</button>
+           </form>
+       </div>
+   </div>
+</footer>
+</body>
+</html>
+
+
+
+

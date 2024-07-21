@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Suggestions | MatchRight.ai</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">MatchRight.ai</div>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="{% url 'features' %}">Features</a></li>
+                <li><a href="{% url 'register' %}">Sign Up</a></li>
+                <li><a href="{% url 'login' %}">Log In</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="location-suggestions-section">
+            <h1>Location Suggestions</h1>
+            <div class="location-suggestions-container">
+                <p>Receive personalized location-based recommendations.</p>
+                <h2>How Location-Based Recommendations Are Generated</h2>
+                <ul>
+                    <li>Users input their interests and preferred types of venues (e.g., cafes, parks, museums).</li>
+                    <li>The platform analyzes user preferences and location data.</li>
+                    <li>The algorithm suggests venues that align with the mutual interests of matched users.</li>
+                </ul>
+                <h2>Example Suggestions and User Scenarios</h2>
+                <ul>
+                    <li>
+                        <strong>Example 1:</strong> Two users interested in art receive a recommendation to visit a local art gallery.
+                    </li>
+                    <li>
+                        <strong>Example 2:</strong> Users who enjoy outdoor activities get a suggestion to meet at a nearby park.
+                    </li>
+                    <li>
+                        <strong>User Scenarios:</strong> Detailed descriptions of how the feature enhances user experiences.
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+          <div class="footer-section">
+              <h4>Quick Links</h4>
+              <ul>
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li><a href="#">About</a></li>
+                  <li><a href="{% url 'features' %}">Features</a></li>
+                  <li><a href="#">Privacy Policy</a></li>
+                  <li><a href="#">Terms of Service</a></li>
+              </ul>
+          </div>
+          <div class="footer-section">
+              <h4>Connect with Us</h4>
+              <div class="social-links">
+                  <a href="#"><i class="fab fa-facebook"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-linkedin"></i></a>
+              </div>
+          </div>
+          <div class="footer-section">
+              <h4>Contact</h4>
+              <p>support@matchright.ai</p>
+          </div>
+      </div>
+      <div class="copyright">
+          &copy; 2023 MatchRight.ai. All rights reserved.
+      </div>
+  </footer>
+</body>
+</html>

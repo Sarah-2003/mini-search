@@ -1,0 +1,50 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<section class="confession-matching-section">
+    <h1>Confession Matching</h1>
+    <p>Express your interest anonymously and find mutual connections.</p>
+
+    {% if user.is_authenticated %}
+        <div class="search-form">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name">Search by Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter name">
+                </div>
+                <div class="form-group">
+                    <label for="semester">Search by Semester</label>
+                    <input type="number" id="semester" name="semester" placeholder="Enter semester">
+                </div>
+                <div class="form-group">
+                    <label for="branch">Search by Branch</label>
+                    <input type="text" id="branch" name="branch" placeholder="Enter branch">
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+
+        {% if search_results %}
+            <div class="search-results">
+                <h2>Search Results</h2>
+                <ul>
+                    {% for user in search_results %}
+                        <li>
+                            {% if user.profile_photo %}
+                                <img src="{{ user.profile_photo.url }}" alt="{{ user.get_full_name }}" class="profile-photo">
+                            {% endif %}
+                            <strong>{{ user.get_full_name }}</strong>
+                            <p>Semester: {{ user.semester }}</p>
+                            <p>Branch: {{ user.branch }}</p>
+                            <a href="{% url 'profile_view' user.id %}" class="btn btn-secondary">View Profile</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    {% else %}
+        <p>Please <a href="{% url 'login' %}">log in</a> or <a href="{% url 'register' %}">register</a> to use the search functionality.</p>
+    {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="mb-4">{% if profile_user == user %}Your Profile{% else %}{{ profile_user.get_full_name }}'s Profile{% endif %}</h1>
+    {% if profile_user == user %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}</label>
+                    {{ form.first_name }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}</label>
+                    {{ form.last_name }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+                    {{ form.email }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.date_of_birth.id_for_label }}">{{ form.date_of_birth.label }}</label>
+                    {{ form.date_of_birth }}
+                </div>
+                <div class="form-group">
+                    <label>{{ form.gender.label }}</label>
+                    {{ form.gender }}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="{{ form.location.id_for_label }}">{{ form.location.label }}</label>
+                    {{ form.location }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.phone_number.id_for_label }}">{{ form.phone_number.label }}</label>
+                    {{ form.phone_number }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.semester.id_for_label }}">{{ form.semester.label }}</label>
+                    {{ form.semester }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.branch.id_for_label }}">{{ form.branch.label }}</label>
+                    {{ form.branch }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.bio.id_for_label }}">{{ form.bio.label }}</label>
+                    {{ form.bio }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.profile_photo.id_for_label }}">{{ form.profile_photo.label }}</label>
+                    {{ form.profile_photo }}
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <a href="{% url 'dashboard' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+    {% else %}
+    <div class="row">
+        <div class="col-md-6">
+            <p><strong>Name:</strong> {{ profile_user.get_full_name }}</p>
+            <p><strong>Email:</strong> {{ profile_user.email }}</p>
+            <p><strong>Date of Birth:</strong> {{ profile_user.date_of_birth }}</p>
+            <p><strong>Gender:</strong> {{ profile_user.gender }}</p>
+            <p><strong>Location:</strong> {{ profile_user.location }}</p>
+        </div>
+        <div class="col-md-6">
+            <p><strong>Phone Number:</strong> {{ profile_user.phone_number }}</p>
+            <p><strong>Semester:</strong> {{ profile_user.semester }}</p>
+            <p><strong>Branch:</strong> {{ profile_user.branch }}</p>
+            <p><strong>Bio:</strong> {{ profile_user.bio }}</p>
+            {% if profile_user.profile_photo %}
+            <img src="{{ profile_user.profile_photo.url }}" alt="{{ profile_user.get_full_name }}" class="img-fluid">
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Dashboard | MatchRight.ai{% endblock %}
+
+{% block content %}
+<section class="dashboard-section">
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Welcome, {{ user.first_name }}!</h1>
+            <div class="profile-preview">
+                {% if user.profile_photo %}
+                    <img src="{{ user.profile_photo.url }}" alt="Profile Photo" class="profile-photo">
+                {% else %}
+                    <img src="{% static 'images/default-profile.png' %}" alt="Default Profile Photo" class="profile-photo">
+                {% endif %}
+                <a href="{% url 'profile_view' %}" class="edit-profile-link">Edit Profile</a>
+            </div>
+        </div>
+        
+        <div class="dashboard-content">
+            <div class="dashboard-card">
+                <h2>Confession Matching</h2>
+                <p>Express your interest anonymously and find mutual connections.</p>
+                <a href="{% url 'confession_matching' %}" class="btn btn-primary">Get Started</a>
+            </div>
+            
+            <div class="dashboard-card">
+                <h2>Compatibility Suggestions</h2>
+                <p>Discover potential matches based on your personality traits.</p>
+                <a href="{% url 'compatibility_suggestions' %}" class="btn btn-primary">Explore Matches</a>
+            </div>
+            
+            <div class="dashboard-card">
+                <h2>Location Suggestions</h2>
+                <p>Receive personalized location-based recommendations.</p>
+                <a href="{% url 'location_suggestions' %}" class="btn btn-primary">View Suggestions</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
